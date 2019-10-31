@@ -1,0 +1,13 @@
+@Library("common-global-library@DEV")_
+
+import com.cal.*
+import jenkins.model.*
+
+pl = new pipeline()
+
+def node = "AGENT_BUILDS"
+
+log.info "Starting work on node ${node}"
+pl.Sources_Checkout("${node}")
+MavenBuild (node_name: "${node}")
+log.info "Job done."
